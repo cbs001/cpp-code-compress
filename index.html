@@ -24,9 +24,23 @@
 					}
 					if (!(" \n\r\t".includes(s[i]))) ih = 0;
 					if (inchar) {
+						if(s[i] == '\\'){
+							all += s[i];
+							i++;
+							all += s[i]; // 转义字符
+							i++;
+							continue;
+						}
 						if (s[i] === '\'') inchar = false;
 						all += s[i];
 					} else if (instr) {
+						if(s[i] == '\\'){
+							all += s[i];
+							i++;
+							all += s[i]; // 转义字符
+							i++;
+							continue;
+						}
 						if (s[i] === '"') instr = false;
 						all += s[i];
 					} else if (innote) {
